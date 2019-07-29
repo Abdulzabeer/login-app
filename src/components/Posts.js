@@ -44,7 +44,7 @@ class Posts extends Component {
                   className="btn btn-warning"
                   onClick={() => this.onUpdateHandler(post, key)}
                 >
-                  Update
+                  Updates
                 </button>
               </div>
             </div>
