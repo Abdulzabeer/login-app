@@ -5,7 +5,7 @@ var firebaseConfig = {
   authDomain: "recentblog-961b5.firebaseapp.com",
   databaseURL: "https://recentblog-961b5.firebaseio.com",
   projectId: "recentblog-961b5",
-  storageBucket: "",
+  storageBucket: "recentblog-961b5.appspot.com",
   messagingSenderId: "620475153529",
   appId: "1:620475153529:web:c039fbb9b6791628"
 };
@@ -14,3 +14,4 @@ firebase.initializeApp(firebaseConfig);
 
 export const database = firebase.database().ref("/posts");
 export const Users = firebase.database().ref("/users");
+export const storage = firebase.storage();

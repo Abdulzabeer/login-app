@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Posts from "./components/Posts";
 import AllLogin from "./components/AllLogin";
 import Home from "./components/Home";
+import ImageUpload from "./components/ImageUpload";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route path="/post" component={Posts} />
             <Route path="/login" component={AllLogin} />
             <Route path="/adduser" component={Login} />
+            <Route path="/upload" component={ImageUpload} />
           </Switch>
         </div>
       </BrowserRouter>

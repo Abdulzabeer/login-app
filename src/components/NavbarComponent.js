@@ -38,6 +38,11 @@ export class NavbarComponent extends Component {
                   Add Users
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/upload">
+                  Add Images
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>
