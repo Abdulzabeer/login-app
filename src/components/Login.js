@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { database } from "../Firebase";
+import { Users } from "../Firebase";
+import _ from "lodash";
 export class Login extends Component {
   constructor(props) {
     super(props);
@@ -21,11 +22,38 @@ export class Login extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    database.push(user);
+    Users.push(user);
     console.log(user);
     this.setState({
-      title: "",
-      body: ""
+      email: "",
+      password: ""
+    });
+  }
+  componentDidMount() {
+    Users.on("value", snapshot => {
+      this.setState({
+        Users: snapshot.val()
+      });
+    });
+  }
+  //render post from firebase
+  onrenderpost() {
+    return _.map(this.state.Users, (user, key) => {
+      return (
+        <div key={key}>
+          <div className="container">
+            <div className="card">
+              <div className="card-body">
+                <h1 className="card-title">{user.email}</h1>
+                <p className="card-text">{user.password}</p>
+                <button className="btn btn-danger m-2">Delete</button>
+                <button className="btn btn-warning">Update</button>
+              </div>
+            </div>
+            <br />
+          </div>
+        </div>
+      );
     });
   }
   render() {
@@ -43,6 +71,7 @@ export class Login extends Component {
               onChange={this.onChangeLogin}
               className="form-control"
             />
+            <br />
             <input
               value={this.state.password}
               type="text"
@@ -52,8 +81,11 @@ export class Login extends Component {
               onChange={this.onChangeLogin}
               className="form-control"
             />
+            <br />
+            <button className="btn btn-primary btn-block">Login</button>
           </form>
-          <button className="btn btn-primary btn-block">Login</button>
+          <br />
+          {this.onrenderpost()}
         </div>
       </div>
     );

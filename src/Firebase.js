@@ -13,3 +13,4 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export const database = firebase.database().ref("/posts");
+export const Users = firebase.database().ref("/users");

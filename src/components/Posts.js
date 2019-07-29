@@ -42,7 +42,7 @@ class Posts extends Component {
                 </button>
                 <button
                   className="btn btn-warning"
-                  onClick={() => this.onUpdateHandler(key)}
+                  onClick={() => this.onUpdateHandler(post, key)}
                 >
                   Update
                 </button>
@@ -91,15 +91,19 @@ class Posts extends Component {
     database.child(items).remove();
   }
 
-  onUpdateHandler(key) {
-    const post = {
-      title: this.state.title,
-      body: this.state.body
-    };
-    var updates = {};
-    updates["/posts" + key] = post;
-    database.child(key).update(updates);
-    console.log(updates);
+  onUpdateHandler(post, key) {
+    this.refs.title.value = post.title;
+    this.refs.body.value = post.body;
+    console.log(key);
+    // var posts = {
+    //   title: post.title,
+    //   body: post.body
+    // };
+    // console.log(posts);
+    // console.log(key);
+    // var updates = {};
+    // updates["/posts" + key] = post;
+    // database.child(key).update(updates);
   }
 
   render() {
